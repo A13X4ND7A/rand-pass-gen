@@ -35,6 +35,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	position: relative;
 }
 
 .password-display {
@@ -52,8 +53,8 @@ body {
 }
 
 .clipboard-button {
+	position: relative;
 	display: block;
-	border: none;
 	background-color: transparent;
 	border: 2px solid #eee;
 	border-radius: 0.5rem;
@@ -107,4 +108,29 @@ label {
 .btn:hover {
 	background-color: rgba(255, 255, 255, 0.4);
 	color: #393e46;
+}
+
+.tooltip {
+	display: none;
+	position: absolute;
+	top: 26px;
+	right: 24px;
+	background: #393e46;
+	color: #eee;
+	font-size: 0.8rem;
+	text-align: center;
+	width: 8ch;
+	padding: 0.5rem 0.5rem;
+	border-radius: 6px;
+	z-index: 99;
+	opacity: 0;
+	transition: opacity 500ms ease-in;
+}
+
+.tooltip.show {
+	opacity: 1;
+}
+
+.block {
+	display: block;
 }

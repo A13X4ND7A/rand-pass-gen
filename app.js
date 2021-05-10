@@ -58,16 +58,36 @@ function generatePassword(charAmount, includeUpper, includeNum, includeSymb) {
 
 //copy to clipboard
 clipboardEl.addEventListener('click', () => {
-	const textarea = document.createElement('textarea');
-	const password = passwordDisplay.innerText;
+	copyPassword();
+	showTooltip();
+});
 
-	if (!password) {
+passwordDisplay.addEventListener('click', () => {
+	copyPassword();
+	showTooltip();
+});
+
+function copyPassword() {
+	const textarea = document.createElement('textarea');
+	const passwordToCopy = passwordDisplay.innerText;
+	if (!passwordToCopy) {
 		return;
 	}
-
-	textarea.value = password;
+	textarea.value = passwordToCopy;
 	document.body.appendChild(textarea);
 	textarea.select();
 	document.execCommand('copy');
 	textarea.remove();
-});
+}
+
+function showTooltip() {
+	const tooltip = document.getElementById('tooltip');
+	tooltip.classList.add('block');
+	tooltip.classList.add('show');
+	setTimeout(function () {
+		tooltip.classList.remove('show');
+	}, 3000);
+	setTimeout(function () {
+		tooltip.classList.remove('block');
+	}, 3500);
+}
