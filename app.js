@@ -2,6 +2,7 @@ const charAmountRange = document.getElementById('charAmountRange');
 const charAmountNumber = document.getElementById('charAmountNumber');
 const form = document.getElementById('passwordGeneratorForm');
 const passwordDisplay = document.getElementById('passwordDisplay');
+const clipboardEl = document.getElementById('clipboard');
 const includeUpperEl = document.getElementById('includeUppercase');
 const includeNumEl = document.getElementById('includeNumbers');
 const includeSymbEl = document.getElementById('includeSymbols');
@@ -54,3 +55,19 @@ function generatePassword(charAmount, includeUpper, includeNum, includeSymb) {
 	}
 	return passwordChar.join('');
 }
+
+//copy to clipboard
+clipboardEl.addEventListener('click', () => {
+	const textarea = document.createElement('textarea');
+	const password = passwordDisplay.innerText;
+
+	if (!password) {
+		return;
+	}
+
+	textarea.value = password;
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	textarea.remove();
+});
