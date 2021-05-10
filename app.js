@@ -34,13 +34,21 @@ function syncCharAmount(e) {
 
 form.addEventListener('submit', (e) => {
 	e.preventDefault();
+	passwordGeneration();
+});
+
+function passwordGeneration() {
 	const charAmount = charAmountNumber.value;
 	const includeUpper = includeUpperEl.checked;
 	const includeNum = includeNumEl.checked;
 	const includeSymb = includeSymbEl.checked;
 	const password = generatePassword(charAmount, includeUpper, includeNum, includeSymb);
 	passwordDisplay.innerText = password;
-});
+}
+
+window.onload = (e) => {
+	passwordGeneration();
+};
 
 //check to see if the tick boxes are ticked, if so add onto the array, push the random character code generated into a new array and convert to the actual char
 function generatePassword(charAmount, includeUpper, includeNum, includeSymb) {
